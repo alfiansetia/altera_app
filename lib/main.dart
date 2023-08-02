@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const ProductList(),
     const Profile(),
   ];
+  final List<String> _title = ['Home', 'Menu', 'Settings'];
 
   int _selectedIndex = 0;
 
@@ -45,9 +46,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material App'),
-        leading: const Icon(Icons.menu),
+        title: Text(
+          _title.elementAt(_selectedIndex),
+          style: const TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        leading: const Icon(
+          Icons.menu,
+          color: Colors.black,
+        ),
+        actions: const [
+          Icon(
+            Icons.search,
+            color: Colors.black,
+          ),
+        ],
       ),
+      backgroundColor: Colors.grey[200],
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         // backgroundColor: Colors.grey[800],
@@ -57,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'User',
+            icon: Icon(Icons.menu),
+            label: 'Menu',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

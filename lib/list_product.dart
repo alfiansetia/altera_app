@@ -8,57 +8,120 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-  final List<Map<String, String>> users = [
+  final List<Map<String, String>> product = [
     {
-      'name': 'Alfian',
-      'avatar': 'A',
-      'telp': '082324129582',
+      'name': 'Es Jus Alpukat',
+      'image': '1.jpeg',
+      'price': '10000',
+      'desc': 'Jus paling laris',
     },
     {
-      'name': 'Setiawan',
-      'avatar': 'S',
-      'telp': '085255655985',
+      'name': 'Ayam Goreng Kalasan',
+      'image': '2.jpeg',
+      'price': '10000',
+      'desc': 'Ayam Pilihan paling empuk',
     },
     {
-      'name': 'asdd',
-      'avatar': 'X',
-      'telp': '085255655985',
-    }
+      'name': 'Nasi goreng semrawut',
+      'image': '3.jpg',
+      'price': '10000',
+      'desc':
+          'Nasi dengan diperkaya akan sebuah beras murni dari thailand yang terasa sangat spesial',
+    },
+    {
+      'name': 'Nasi goreng semrawut',
+      'image': '4.jpeg',
+      'price': '10000',
+      'desc':
+          'Nasi dengan diperkaya akan sebuah beras murni dari thailand yang terasa sangat spesial',
+    },
+    {
+      'name': 'Nasi goreng semrawut',
+      'image': '5.jpeg',
+      'price': '10000',
+      'desc':
+          'Nasi dengan diperkaya akan sebuah beras murni dari thailand yang terasa sangat spesial',
+    },
+    {
+      'name': 'Nasi goreng semrawut',
+      'image': '6.jpeg',
+      'price': '10000',
+      'desc':
+          'Nasi dengan diperkaya akan sebuah beras murni dari thailand yang terasa sangat spesial',
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: users.map((user) {
+        children: product.map((prod) {
+          String name = prod['name'] ?? '';
+          String img = prod['image'] ?? '1.jpeg';
+          String price = prod['price'] ?? '';
+          String desc = prod['desc'] ?? '';
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.green,
-                  radius: 25,
-                  child: Text(user['avatar'] ?? '',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      )),
-                ),
-                const SizedBox(width: 16.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      user['name'] ?? '',
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
+            child: Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/makanan/$img',
+                    fit: BoxFit.fill,
+                    width: 100,
+                    height: 100,
+                  ),
+                  const SizedBox(width: 16.0),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              // height: 40,
+                              width: 150,
+                              child: Text(
+                                name,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'RP. $price',
+                              style: const TextStyle(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 1,
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        SizedBox(
+                          height: 50,
+                          width: 250,
+                          child: Text(
+                            desc,
+                            style: const TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 3),
-                    Text(user['telp'] ?? ''),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           );
         }).toList(),
